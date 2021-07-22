@@ -111,6 +111,8 @@ Use the MAF $\in$ [0.15, 0.35] to filter the 244782 SNPs of Maize in the G3_6spe
 
 Among 100068 SNPs, chromosomes are divided into block lengths of 10KB, 50KB, 100KB, 500KB, 1MB and 2MB, respectively. Randomly select 1 SNP in each block. Here we have randomized 10 times in total.
 
+<br>
+
 <center>
 
 Block | 10KB | 50KB | 100KB | 500KB | 1MB | 2MB
@@ -128,7 +130,7 @@ Using the above 6 * 10 groups of SNP sets as training features of LGB to predict
 
 <br>
 
-<center><font size=5>LGB Maize 10-Random 100-CV 5-Fold</font></center>
+<font size=5>LGB Maize 10-Random 100-CV 5-Fold</font>
 
 <center>
 
