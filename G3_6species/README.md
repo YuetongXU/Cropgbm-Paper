@@ -111,28 +111,17 @@ LGB | 0.40 | 0.41 | 0.56 | 0.48 | 0.30 | 0.60
 
 ---
 
-Use the MAF $\in$ [0.15, 0.35] to filter the 244782 SNPs of Maize in the G3_6species database to obtain 100068 SNPs (/data/maize_snp_maf_15-35.csv).
+Use the MAF $\in$ [0.15, 0.35] to filter the 244782 SNPs of Maize in the G3_6species database to obtain 100068 SNPs (_/data/maize_snp_maf_15-35.csv_).
 
-Among 100068 SNPs, chromosomes are divided into block lengths of 10KB, 50KB, 100KB, 500KB, and 1MB, respectively. Randomly select 1 SNP in each Block, and get 20025, 13186, 10353, 3667, 1978 SNPs respectively. Here we have randomized 10 times in total.
+Among 100068 SNPs, chromosomes are divided into block lengths of 10KB, 50KB, 100KB, 500KB, 1MB and 2MB, respectively. Randomly select 1 SNP in each Block, and get 20025, 13186, 10353, 3667, 1978, 1029 SNPs respectively. Here we have randomized 10 times in total.
 
-利用 MAF区间 [0.15, 0.35] 对 G3_6species 数据库中 Maize 的244782个SNP进行过滤，得到100068个SNP (/data/maize_snp_maf_15-35.csv)。
+<center>
 
-在100068个SNP中，分别以 10KB、50KB、100KB、500KB、1MB为Block长度划分染色体。在每个Block中随机挑选1个SNP，分别得到20025、13186、10353、3667、1978个SNP。这里我们总共随机了10次。
+Block | 10KB | 50KB | 100KB | 500KB | 1MB | 2MB
+---|---|---|---|---|---|---
+SNP | 20025 | 13186 | 10353 | 3667 | 1978 | 1029
 
-Block
-10KB
-50KB
-100KB
-500KB
-1MB
-2MB
-SNP
-20025
-13186
-10353
-3667
-1978
-1029
+</center>
 
 * 使用脚本 G3_6species_randomSNP.py
 * 每次随机抽取到的SNP_ID参见 /data/random_10/
