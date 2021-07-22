@@ -1,6 +1,5 @@
 # Data Information
 
----
 
 This experiment uses the database in the G3 article: 
 
@@ -28,7 +27,6 @@ Population | Diversity Panel | Diversity Panel | NAM | Partial DM | Diversity Pa
 
 # Hyperparameters Grid-search
 
----
 
 We use the method of grid search (_G3_6species_grid_search.py_) to detect the best combination of the following 5 hyperparameters of LightGBM in the HT phenotype of the G3_6species database:
 
@@ -54,7 +52,7 @@ The best combination of hyperparameter values for different species obtained by 
 
 <br>
 
-<center><font size=5>Best-Parameters Grid-search (5-CV 5-fold)</font></center>
+<center> <font size=5> Best-Parameters Grid-search (5-CV 5-fold) </font> </center>
 
 <center>
 
@@ -73,7 +71,6 @@ maize | 0.05 | 5 | 160 | 20 | 10
 
 # Fixed Hyperparameter
 
----
 
 Considering that grid search is time-consuming, it is recommended to use fixed parameters that are robust in each species in the practical application of LGB (_learning_rate = 0.05, max_depth = 5, n_estimators = 160, min_data_in_leaf = 20, num_leaves = 10_) to make predictions for each species. Although the prediction accuracy is slightly lower than the best parameters, it saves a lot of time for users to find the best parameters through grid search. The prediction results of the HT phenotypes of 6 species using fixed parameters are as follows (100-CV 5-fold, the way of dividing the data set by each CV is consistent with the reference):
 
@@ -85,18 +82,18 @@ Considering that grid search is time-consuming, it is recommended to use fixed p
 
 | |Maize | Rice | Sorghum | Soy | Spruce | Switchgrass
 :---:|:---:|:---:|:---:|:---:|:---:|:---:
-rrBLUP | 0.44 | 0.34 | 0.63 | 0.46 | 0.32 | 0.61
-BRA | 0.44 | 0.39 | 0.63 | 0.46 | 0.32 | 0.61
-BA | 0.42 | 0.38 | 0.63 | 0.47 | 0.32 | 0.61
-BB | 0.43 | 0.38 | 0.63 | 0.46 | 0.32 | 0.61
-BL | 0.44 | 0.39 | 0.62 | 0.46 | 0.32 | 0.61
+rrBLUP | **0.44** | 0.34 | **0.63** | 0.46 | 0.32 | **0.61**
+BRA | **0.44** | 0.39 | **0.63** | 0.46 | 0.32 | **0.61**
+BA | 0.42 | 0.38 | **0.63** | 0.47 | 0.32 | **0.61**
+BB | 0.43 | 0.38 | **0.63** | 0.46 | 0.32 | **0.61**
+BL | **0.44** | 0.39 | 0.62 | 0.46 | 0.32 | **0.61**
 SVRlin | 0.41 | 0.38 | 0.62 | 0.43 | 0.19 | 0.60
-SVRpoly | 0.43 | 0.38 | 0.63 | 0.41 | 0.33 | 0.61
-SVRrbf | 0.39 | 0.38 | 0.63 | 0.04 | 0.34 | 0.60
-RF | 0.43 | 0.40 | 0.58 | 0.36 | 0.35 | 0.57
+SVRpoly | 0.43 | 0.38 | **0.63** | 0.41 | 0.33 | **0.61**
+SVRrbf | 0.39 | 0.38 | **0.63** | 0.04 | 0.34 | 0.60
+RF | 0.43 | 0.40 | 0.58 | 0.36 | **0.35** | 0.57
 GTB | 0.37 | 0.38 | 0.58 | 0.40 | 0.33 | 0.56
 ANN | 0.17 | 0.08 | 0.45 | 0.44 | 0.28 | 0.45
-LGB | 0.40 | 0.41 | 0.56 | 0.48 | 0.30 | 0.60
+LGB | 0.40 | **0.41** | 0.56 | **0.48** | 0.30 | 0.60
 
 </center>
 
@@ -109,7 +106,6 @@ LGB | 0.40 | 0.41 | 0.56 | 0.48 | 0.30 | 0.60
 
 # Random SNP
 
----
 
 Use the MAF $\in$ [0.15, 0.35] to filter the 244782 SNPs of Maize in the G3_6species database to obtain 100068 SNPs (_/data/maize_snp_maf_15-35.csv_).
 
@@ -134,15 +130,19 @@ Using the above 6 * 10 groups of SNP sets as training features of LGB to predict
 
 <center><font size=5>LGB Maize 10-Random 100-CV 5-Fold</font></center>
 
+<center>
+
 | | ALL SNP | 10KB | 50KB | 100KB | 500KB | 1MB | 2MB
 :---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:
 HT | 0.4041 | 0.3939 | 0.3945 | 0.3864 | 0.3841 | 0.3760 | 0.3583
 FT | 0.7082 | 0.6890 | 0.6782 | 0.6773 | 0.6753 | 0.6535 | 0.6220
 YLD | 0.5051 | 0.4967 | 0.4960 | 0.4874 | 0.4918 | 0.4647 | 0.4509
 
-* 使用脚本 G3_6species_pred_by_randomSNP.py
-* LGB超参数： learning_rate = 0.05, max_depth = 5, n_estimators = 160, min_data_in_leaf = 20, num_leaves = 10
-* LGB 每次CV的详细结果参见 /data/cv100_pearson_maize.csv (ALL SNP), random10_cv100_maize_HT/FT/YLD/summery.csv
+</center>
+
+* Use the script _G3_6species_pred_by_randomSNP.py_
+* LGB hyperparameters: _learning_rate = 0.05, max_depth = 5, n_estimators = 160, min_data_in_leaf = 20, num_leaves = 10_
+* For the detailed results of each CV of LGB, refer to: _/data/cv100_pearson_maize.csv (ALL SNP)_, _random10_cv100_maize_HT/FT/YLD/summery.csv_
 
 
 
