@@ -10,7 +10,7 @@ The database contains the genotype and phenotype data of 6 species. The specific
 
 <br>
 
-<center><font size=5>G3 6 species information</font></center>
+<font size=5>G3 6 species information</font>
 
 |   |Rice | Maize | Soy | Spruce | Switchgrass | Sorghum |
 |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
@@ -32,7 +32,7 @@ We use the method of grid search (_G3_6species_grid_search.py_) to detect the be
 
 <br>
 
-<center><font size=5>Hyperparameters Grid-search (5-CV 5-fold)</font></center>
+<font size=5>Hyperparameters Grid-search (5-CV 5-fold)</font>
 
 <center>
 
@@ -52,7 +52,7 @@ The best combination of hyperparameter values for different species obtained by 
 
 <br>
 
-<center> <font size=5> Best-Parameters Grid-search (5-CV 5-fold) </font> </center>
+<font size=5>Best-Parameters Grid-search (5-CV 5-fold)</font>
 
 <center>
 
@@ -76,7 +76,7 @@ Considering that grid search is time-consuming, it is recommended to use fixed p
 
 <br>
 
-<center><font size=5>Fixed-Parameters Prediction Pearson (HT, 100-CV, 5-fold)</font></center>
+<font size=5>Fixed-Parameters Prediction Pearson (HT, 100-CV, 5-fold)</font>
 
 <center>
 
@@ -130,7 +130,7 @@ Using the above 6 * 10 groups of SNP sets as training features of LGB to predict
 
 <br>
 
-<font size=6>LGB Maize 10-Random 100-CV 5-Fold</font>
+<font size=5>LGB Maize 10-Random 100-CV 5-Fold</font>
 
 <center>
 
