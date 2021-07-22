@@ -130,7 +130,7 @@ Using the above 6 * 10 groups of SNP sets as training features of LGB to predict
 
 <br>
 
-<font size=5>LGB Maize 10-Random 100-CV 5-Fold</font>
+<font size=6>LGB Maize 10-Random 100-CV 5-Fold</font>
 
 <center>
 
