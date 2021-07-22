@@ -113,56 +113,32 @@ LGB | 0.40 | 0.41 | 0.56 | 0.48 | 0.30 | 0.60
 
 Use the MAF $\in$ [0.15, 0.35] to filter the 244782 SNPs of Maize in the G3_6species database to obtain 100068 SNPs (_/data/maize_snp_maf_15-35.csv_).
 
-Among 100068 SNPs, chromosomes are divided into block lengths of 10KB, 50KB, 100KB, 500KB, 1MB and 2MB, respectively. Randomly select 1 SNP in each Block, and get 20025, 13186, 10353, 3667, 1978, 1029 SNPs respectively. Here we have randomized 10 times in total.
+Among 100068 SNPs, chromosomes are divided into block lengths of 10KB, 50KB, 100KB, 500KB, 1MB and 2MB, respectively. Randomly select 1 SNP in each block. Here we have randomized 10 times in total.
 
 <center>
 
 Block | 10KB | 50KB | 100KB | 500KB | 1MB | 2MB
----|---|---|---|---|---|---
+:---:|:---:|:---:|:---:|:---:|:---:|:---:
 SNP | 20025 | 13186 | 10353 | 3667 | 1978 | 1029
 
 </center>
 
-* 使用脚本 G3_6species_randomSNP.py
-* 每次随机抽取到的SNP_ID参见 /data/random_10/
+* Use the script _G3_6species_randomSNP.py_
+* See the SNP_ID randomly selected each time in: _/data/random_10/_
 
+<br>
 
-将上述 6*10 组SNP集合作为LGB的训练特征预测HT、FT、YLD表型，进行100-CV, 5-Fold，结果如下：
+Using the above 6 * 10 groups of SNP sets as training features of LGB to predict HT, FT, and YLD phenotypes, perform 100-CV, 5-Fold, and the results are as follows:
 
-LGB Maize 10-Random 100-CV 5-Fold
+<br>
 
+<center><font size=5>LGB Maize 10-Random 100-CV 5-Fold</font></center>
 
-ALL SNP
-10KB
-50KB
-100KB
-500KB
-1MB
-2MB
-HT
-0.4041
-0.3939
-0.3945
-0.3864
-0.3841
-0.3760
-0.3583
-FT
-0.7082
-0.6890
-0.6782
-0.6773
-0.6753
-0.6535
-0.6220
-YLD
-0.5051
-0.4967
-0.4960
-0.4874
-0.4918
-0.4647
-0.4509
+| | ALL SNP | 10KB | 50KB | 100KB | 500KB | 1MB | 2MB
+:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:
+HT | 0.4041 | 0.3939 | 0.3945 | 0.3864 | 0.3841 | 0.3760 | 0.3583
+FT | 0.7082 | 0.6890 | 0.6782 | 0.6773 | 0.6753 | 0.6535 | 0.6220
+YLD | 0.5051 | 0.4967 | 0.4960 | 0.4874 | 0.4918 | 0.4647 | 0.4509
 
 * 使用脚本 G3_6species_pred_by_randomSNP.py
 * LGB超参数： learning_rate = 0.05, max_depth = 5, n_estimators = 160, min_data_in_leaf = 20, num_leaves = 10
