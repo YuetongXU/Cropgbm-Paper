@@ -144,7 +144,23 @@ YLD | 0.5051 | 0.4967 | 0.4960 | 0.4874 | 0.4918 | 0.4647 | 0.4509
 
 * Use the script _G3_6species_pred_by_randomSNP.py_
 * LGB hyperparameters: _learning_rate = 0.05, max_depth = 5, n_estimators = 160, min_data_in_leaf = 20, num_leaves = 10_
-* For the detailed results of each CV of LGB, refer to: _/data/cv100_pearson_maize.csv (ALL SNP)_, _random10_cv100_maize_HT/FT/YLD/summery.csv_
+* For the detailed results of each CV of LGB, refer to: _/data/cv100_pearson_maize_lgb.csv (ALL SNP)_, _random10_cv100_maize_HT/FT/YLD/summery_lgb.csv_
 
+<br>
+
+<font size=5>rrBLUP Maize 10-Random 100-CV 5-Fold</font>
+
+<center>
+
+| | ALL SNP | 10KB | 50KB | 100KB | 500KB | 1MB | 2MB
+:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:
+HT | 0.4627 | 0.4556 | 0.4528 | 0.4432 | 0.4294 | 0.4129 | 0.4041
+FT | 0.7643 | 0.7590 | 0.7549 | 0.7533 | 0.7199 | 0.6973 | 0.6384
+YLD | 0.5420 | 0.5372 | 0.5381 | 0.5373 | 0.5199 | 0.5075 | 0.4942
+
+</center>
+
+* Use the script _G3_6species_randomSNP_rrblup.r_, _G3_6species_allSNP_rrblup.r_
+* For the detailed results of each CV of rrBLUP, refer to: _/data/cv100_pearson_maize_rrblup.csv (ALL SNP)_, _random10_cv100_maize_rrblup.csv_
 
 

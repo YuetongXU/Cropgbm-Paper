@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-from pandas import read_csv
 import G3_6species_function as f
 import numpy as np
 
@@ -18,8 +17,6 @@ for species in species_list:
 
         # CV
         params_dict = {
-            'method': method,
-            'species': species,
             'phe_name': phe_namei,
             'learning_rate': 0.05,
             'max_depth': 5,
