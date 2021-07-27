@@ -3,6 +3,7 @@ import random
 import numpy as np
 import pandas as pd
 import lightgbm as lgb
+from pandas import read_csv
 import scipy.stats as stats
 from multiprocessing import Pool
 
@@ -23,6 +24,72 @@ def prepare_cv_data(phe_data, save_path, cv_times, cvfold):
 
 
 def train_predict(geno_data, phe_data, params_dict, cv_time: str, model_savepath=None):
+
+    phe_name = params_dict['phe_name']
+
+    train_params = {
+        'learning_rate': params_dict['learning_rate'],
+        'max_depth': params_dict['max_depth'],
+        'min_data_in_leaf': params_dict['min_data_in_leaf'],
+        'num_leaves': params_dict['num_leaves'],
+        'objective': 'regression',
+        'verbosity': -1,
+        'num_threads': 10
+    }
+    n_estimators = params_dict['n_estimators']
+
+    train_phe = phe_data[phe_data[cv_time] == 1][phe_name].dropna(axis=0)
+    test_phe = phe_data[phe_data[cv_time] != 1][phe_name].dropna(axis=0)
+    train_geno = geno_data.loc[train_phe.index.values, :]
+    test_geno = geno_data.loc[test_phe.index.values, :]
+
+    train_set = lgb.Dataset(train_geno, label=train_phe)
+    train_boost = lgb.train(train_params, train_set, n_estimators)
+    if model_savepath is not None:
+        train_boost.save_model(model_savepath + '_' + cv_time + '.lgb_model')
+
+    predict_phe = train_boost.predict(test_geno)
+    pearson, p_value = stats.pearsonr(predict_phe, test_phe)
+    print(phe_name, 'All', cv_time, pearson)
+
+    return pearson
+
+
+def train_predict_reduce(geno_data, phe_data, params_dict, cv_time: str, fnumber_snpid, fnumber: int, model_savepath=None):
+
+    phe_name = params_dict['phe_name']
+    train_params = {
+        'learning_rate': params_dict['learning_rate'],
+        'max_depth': params_dict['max_depth'],
+        'min_data_in_leaf': params_dict['min_data_in_leaf'],
+        'num_leaves': params_dict['num_leaves'],
+        'objective': 'regression',
+        'verbosity': -1,
+        'num_threads': 10
+    }
+    n_estimators = params_dict['n_estimators']
+
+    train_phe = phe_data[phe_data[cv_time] == 1][phe_name].dropna(axis=0)
+    test_phe = phe_data[phe_data[cv_time] != 1][phe_name].dropna(axis=0)
+
+    geno_fnumber = geno_data.loc[:, fnumber_snpid].copy()
+
+    train_geno = geno_fnumber.loc[train_phe.index.values, :]
+    test_geno = geno_fnumber.loc[test_phe.index.values, :]
+
+    train_set = lgb.Dataset(train_geno, label=train_phe)
+    train_boost = lgb.train(train_params, train_set, n_estimators)
+    if model_savepath is not None:
+        train_boost.save_model(model_savepath + '_' + cv_time + '.lgb_model')
+
+    predict_phe = train_boost.predict(test_geno)
+    pearson, p_value = stats.pearsonr(predict_phe, test_phe)
+    print(phe_name, fnumber, cv_time, pearson)
+
+    return pearson
+
+
+def train_predict_cv(geno_data, phe_data, params_dict, cv_time: str, model_savepath=None):
 
     cvfold = params_dict['cvfold']
     phe_name = params_dict['phe_name']
@@ -71,7 +138,7 @@ def cv(geno_data, phe_data, params_dict: dict, save_path=None):
     for cv_time in range(cv_times):
         cv_time = 'cv' + str(cv_time)
         pool_list.append(pool.apply_async(
-            train_predict, [geno_data, phe_data, params_dict, cv_time, save_path]))
+            train_predict_cv, [geno_data, phe_data, params_dict, cv_time, save_path]))
 
     pool.close()
     pool.join()
@@ -150,7 +217,6 @@ def summery_cv_feature(model_prefix, cv_times: int, cvfold: int, n_estimators: i
 
     feature_save = model_prefix + '_cv' + str(cv_times) + '.feature'
     exfeature_by_regression(tree_info_dict, n_estimators, feature_save)
-
 
 
 
