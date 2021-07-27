@@ -2,15 +2,11 @@
 
 ## Purpose
 
----
-
 We explored the accuracy changes when using different numbers of SNPs to predict phenotypes, and we hope to minimize the SNPs required for prediction without loss of prediction accuracy.
 
 <br>
 
 ## method
-
----
 
 1. The dataset uses Female_1428, 80% of the samples are randomly selected as the trainset, and the remaining 20% are used as the testset: data/Phenotype.female_1428_values.cvid.csv
 2. After the ligbtgbm training is completed, the Pearson correlation coefficient between the predicted phenotype and the true phenotype is calculated, 
@@ -25,8 +21,6 @@ We explored the accuracy changes when using different numbers of SNPs to predict
 <br>
 
 ## result
-
----
 
 The prediction accuracy of modeling with different gradient topSNP, uniformSNP, and randomSNP as features is as follows:
 
