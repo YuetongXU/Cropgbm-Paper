@@ -1,5 +1,7 @@
 Here are the scripts used in the CropGBM paper.
 
+[![DOI](https://zenodo.org/badge/386224715.svg)](https://zenodo.org/badge/latestdoi/386224715)
+
 * modelTest.py is a python script which used for machine learning model building, hyperparameter tunning, G2P analysis and evaluation.
 * MLmodelTest.sh is a shell script which used for the evaluation and selection of basic ML models.
 * fixTrain.sh, fixTest.sh, 1vs9Test.sh, and 9vs1Test.sh are shell scripts which used for the comparison of rrBLUP and GB/LGB models on different data size/ratio. 
