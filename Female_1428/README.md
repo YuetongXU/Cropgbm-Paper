@@ -1,5 +1,7 @@
 # SNP Selection
 
+[![DOI](https://zenodo.org/badge/386224715.svg)](https://zenodo.org/badge/latestdoi/386224715)
+
 ## Purpose
 
 We explored the accuracy changes when using different numbers of SNPs to predict phenotypes, and we hope to minimize the SNPs required for prediction without loss of prediction accuracy.
