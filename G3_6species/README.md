@@ -1,5 +1,6 @@
 # Data Information
 
+[![DOI](https://zenodo.org/badge/386224715.svg)](https://zenodo.org/badge/latestdoi/386224715)
 
 This experiment uses the database in the G3 article: 
 
